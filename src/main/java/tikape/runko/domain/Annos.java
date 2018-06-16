@@ -57,6 +57,8 @@ private class reseptiRaakaAine {
     public void setNimi(String nimi) {
         this.nimi = nimi;
     }
-
+    public ArrayList<reseptiRaakaAine> getreseptiRaakaAineet(){
+        return this.RaakaAineLista;
+    }
 }
 
