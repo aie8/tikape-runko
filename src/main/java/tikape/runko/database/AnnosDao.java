@@ -91,5 +91,15 @@ public class AnnosDao implements Dao<Annos, Integer> {
     public void delete(Integer key) throws SQLException {
         // ei toteutettu
     }
+    public Annos saveOrUpdate(Annos object) throws SQLException {
+        try (Connection conn = database.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(
+                "INSERT INTO Annos (nimi) VALUES (?)");
+            stmt.setString(1, object.getNimi());
+            stmt.executeUpdate();
+        }
 
+        return null;
+    }
+    
 }

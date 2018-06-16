@@ -7,12 +7,60 @@
     </head>
 
     <body>
-        <h1>Hei opiskelijat!</h1>
+        <h1>Annokset</h1>
 
         <ol>
             <li th:each="annos: ${annokset}">
                 <span th:text="${annos.nimi}">Annoksen nimi</span> <a th:href="${'/annokset/' + annos.id}">Resepti</a>
             </li>
         </ol>
-    </body>
+        
+<!--  <h2>Annokset</h2>
+
+  <ul>
+    <li><a href="2/">Aurinkolasit</a> (<a href="2/poista">poista</a>)</li>
+    <li><a href="1/">Mustikkaplorays</a> (<a href="1/poista">poista</a>)</li>
+  </ul>-->
+
+  <h4>Lisää uusi</h4>
+  
+  <form method="POST" action="/uusi_annos">
+      Annoksen nimi:<br/>
+      <input type="text" name="uusi_annos"/><br/>
+      <input type="submit" value="Lisää"/>
+  </form>
+  <form method="POST" action="/uusi_aine">
+      Raaka-aineen nimi:<br/>
+      <input type="text" name="uusi_aine"/><br/>
+      <input type="submit" value="Lisää"/>
+  </form>
+  
+  <h4>Lisää raaka-aineita annoksiin</h4>
+
+  <form method="POST" action="">
+      Annoksen nimi:<br/>
+      <select name="annos_valinta">
+        <option th:each="annos:${annokset}" th:value="${annos.id}" th:text="${annos.nimi}"></option>
+      </select>
+      <br/>
+      Lisättävä raaka-aine<br/>
+      <select name="raakaaine_valinta">
+        <option th:each="raakaAine:${raaka_aineet}" th:value ="${raakaAine.id}" th:text="${raakaAine.nimi}"></option>
+      </select>
+      <br/>
+      Järjestys<br/>
+      <input type="text" name="jarjestys"/><br/>
+      Määrä<br/>
+      <input type="text" name="maara"/><br/>
+      Ohje<br/>
+      <input type="text" name="ohje"/><br/>
+      <input type="submit" value="Lisää"/>
+  </form>
+
+  <ul>
+    <li>
+      <a href="../">Smoothielistaukseen</a>
+    </li>
+  </ul>
+</body>
 </html>
