@@ -79,6 +79,8 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
         return null;
     }
     
+    
+    
 //    public List<RaakaAine> findReseptiRaakaAineet(Integer key) throws SQLException {
 //
 //        Connection connection = database.getConnection();

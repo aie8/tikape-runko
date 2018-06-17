@@ -155,5 +155,27 @@ public class AnnosRaakaAineDao  {
     public void delete(Integer key) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+        public Integer getNumber(Integer rkey) throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT COUNT(*) as lkm FROM AnnosRaakaAine WHERE raaka_aine_id = (?)");
+        stmt.setObject(1, rkey);
+        ResultSet rs = stmt.executeQuery();
+        boolean hasOne = rs.next();
+        if (!hasOne) {
+            return null;
+        }
+
+
+        Integer retval= new Integer(rs.getInt("lkm"));
+   
+       
+               rs.close();
+        stmt.close();
+        connection.close();
+
+        return retval;
+    }
+    
 }
 

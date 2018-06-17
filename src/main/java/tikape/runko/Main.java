@@ -62,7 +62,7 @@ public class Main {
                   get("/raine/:rid", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("raaka_aine", raakaAineDao.findOne(Integer.parseInt(req.params(":rid"))));
-            map.put("lkm", new Integer(1));
+            map.put("lkm", annosRaakaAineDao.getNumber(Integer.parseInt(req.params(":rid"))));
             return new ModelAndView(map, "RaakaAine");
         }, new ThymeleafTemplateEngine());
         
