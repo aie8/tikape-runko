@@ -8,9 +8,9 @@
     </head>
 
     <body>
-        <h1>Annokset</h1>
-            <li th:each="annos: ${annokset}">
-                <span th:text="${annos.nimi}">Annoksen nimi</span> <a th:href="${'/annokset/' + annos.id}">Resepti</a>
+        <h1>Raaka-aineet</h1>
+            <li th:each="raine: ${raaka_aineet}">
+                <span th:text="${raine.nimi}">Annoksen nimi</span> <a th:href="${'/raine/' + raine.id}">Tiedot</a>
             </li>
         
 </body>
