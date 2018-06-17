@@ -103,7 +103,14 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
 //    }
     @Override
     public void delete(Integer key) throws SQLException {
-        // ei toteutettu
+                try (Connection conn = database.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(
+                "DELETE FROM RaakaAine WHERE id=(?)");
+            stmt.setInt(1, key);
+            stmt.executeUpdate();
+        }
+
+        
     }
 
 }

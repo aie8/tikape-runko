@@ -96,6 +96,10 @@ public class Main {
     return "";
         });
         
-        
+                 post("/poista/:rid", (req, res) -> {
+            raakaAineDao.delete(Integer.parseInt(req.params(":rid")));
+            return "";
+        });
+           
     }
 }
