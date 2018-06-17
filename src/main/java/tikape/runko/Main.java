@@ -69,6 +69,17 @@ public class Main {
         
         
         post("/Etusivu", (req, res) -> {
+            
+               if(null == req.queryParams("annos_valinta")|| req.queryParams("annos_valinta").trim().isEmpty())
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}
+                            if(null == req.queryParams("raakaaine_valinta")|| req.queryParams("raakaaine_valinta").trim().isEmpty())
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}  
+             
+            if(null == req.queryParams("maara")|| req.queryParams("maara").trim().isEmpty())
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}
+                          if(null == req.queryParams("jarjestys")|| req.queryParams("jarjestys").trim().isEmpty())
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}                 
+            
             int annos_id = Integer.parseInt(req.queryParams("annos_valinta"));
            
             int raaka_aine_id=Integer.parseInt(req.queryParams("raakaaine_valinta"));
@@ -86,13 +97,15 @@ public class Main {
                 post("/uusi_annos", (req, res) -> {
              String uusi_annos=req.queryParams("uusi_annos");
              if(null == uusi_annos || uusi_annos.trim().isEmpty())
-             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollsita" ;}
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}
             annosDao.saveOrUpdate(new Annos(1,uusi_annos));
                         res.redirect("/Etusivu");
     return "";
         });
                         post("/uusi_aine", (req, res) -> {
              String uusi_aine=req.queryParams("uusi_aine");
+                          if(null == uusi_aine || uusi_aine.trim().isEmpty())
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}
             raakaAineDao.saveOrUpdate(new RaakaAine(1,uusi_aine));
                         res.redirect("/Etusivu");
     return "";
