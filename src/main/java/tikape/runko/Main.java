@@ -92,11 +92,11 @@ public class Main {
             
             if (isInteger( req.queryParams("maara"))==false)
             {
-            return "Virheellinen syöte, tarkasta että syötit kokonaisluvun";
+            return "Virheellinen syöte, tarkasta että syötit kokonaisluvun määrää ja järjestystä kuvaaviin kenttiin";
             }
                         if (isInteger( req.queryParams("jarjestys"))==false)
             {
-            return "Virheellinen syöte, tarkasta että syötit kokonaisluvun";
+            return "Virheellinen syöte, tarkasta että syötit kokonaisluvun määrää ja järjestystä kuvaaviin kenttiin";
             }
             int annos_id = Integer.parseInt(req.queryParams("annos_valinta"));
            
