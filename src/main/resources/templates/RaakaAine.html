@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Annossivu</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+
+        <p>Olet saapunut Raaka-aineen <span th:text="${raaka_aine.nimi}"></span> Tilastosivulle. Raaka-aine on käytössä <span th:text="${lkm.toString()}"></span>:ssä annoksessa. </p>
+                <ol>
+            <li th:each="raaka_aine: ${raaka_aineet}">
+                <span th:text="${raaka_aine.RaakaAineNimi}">Raaka-aineen nimi</span> <a th:href="@{~/annokset/{id}/{rid}(id=${annos.id},rid=${raaka_aine.RaakaAineId})}">Ohje</a>
+            </li>
+                    </ol>
+                    
+ 
+                    
+        
+<!--  <h2>Annokset</h2>
+
+  <ul>
+    <li><a href="2/">Aurinkolasit</a> (<a href="2/poista">poista</a>)</li>
+    <li><a href="1/">Mustikkaplorays</a> (<a href="1/poista">poista</a>)</li>
+  </ul>-->
+
+
+
+
+
+</body>
+</html>

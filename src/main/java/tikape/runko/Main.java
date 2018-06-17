@@ -59,8 +59,12 @@ public class Main {
   //          map.put("raaka_aine", annosRaakaAineDao.findOne(Integer.parseInt(req.params(":rid")),Integer.parseInt(req.params(":id"))));
             return new ModelAndView(map, "RaakaAineet");
         }, new ThymeleafTemplateEngine());  
-          
-        
+                  get("/raine/:rid", (req, res) -> {
+            HashMap map = new HashMap<>();
+            map.put("raaka_aine", raakaAineDao.findOne(Integer.parseInt(req.params(":rid"))));
+            map.put("lkm", new Integer(1));
+            return new ModelAndView(map, "RaakaAine");
+        }, new ThymeleafTemplateEngine());
         
         
         
