@@ -152,9 +152,9 @@ public class AnnosRaakaAineDao  {
         return null;
     }
 
-    public void delete(Integer key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+ //   public void delete(Integer key) throws SQLException {
+  //      throw new UnsupportedOperationException("Not supported yet.");
+  //  }
     
         public Integer getNumber(Integer rkey) throws SQLException {
         Connection connection = database.getConnection();
@@ -176,6 +176,24 @@ public class AnnosRaakaAineDao  {
 
         return retval;
     }
+            public void rAineDelete(Integer key) throws SQLException {
+                try (Connection conn = database.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(
+                "DELETE FROM AnnosRaakaAine WHERE raaka_aine_id=(?)");
+            stmt.setInt(1, key);
+            stmt.executeUpdate();
+        }
+            }
+                
+         public void annosDelete(Integer key) throws SQLException {
+                try (Connection conn = database.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(
+                "DELETE FROM AnnosRaakaAine WHERE Annos_id=(?)");
+            stmt.setInt(1, key);
+            stmt.executeUpdate();
+        }
     
 }
+}
+
 

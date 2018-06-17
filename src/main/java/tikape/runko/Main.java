@@ -97,6 +97,7 @@ public class Main {
         });
         
                  get("/poista/:rid", (req, res) -> {
+            annosRaakaAineDao.rAineDelete(Integer.parseInt(req.params(":rid")));         
             raakaAineDao.delete(Integer.parseInt(req.params(":rid")));
             res.redirect("/Raaka_aineet");
             return "";
