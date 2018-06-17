@@ -26,17 +26,17 @@ public class Main {
         AnnosDao annosDao = new AnnosDao(database);
         AnnosRaakaAineDao annosRaakaAineDao=new AnnosRaakaAineDao(database);
         get("/", (req, res) -> {
-            HashMap map = new HashMap<>();
-            map.put("viesti", "tervehdys");
+       //     HashMap map = new HashMap<>();
+       //     map.put("viesti", "tervehdys");
+        res.redirect("/Etusivu");
+            return "";
+        });
 
-            return new ModelAndView(map, "index");
-        }, new ThymeleafTemplateEngine());
-
-        get("/opiskelijat", (req, res) -> {
+        get("/Etusivu", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("annokset", annosDao.findAll());
             map.put("raaka_aineet", raakaAineDao.findAll());
-            return new ModelAndView(map, "opiskelijat");
+            return new ModelAndView(map, "Etusivu");
         }, new ThymeleafTemplateEngine());
 
         get("/annokset/:id", (req, res) -> {
@@ -56,7 +56,7 @@ public class Main {
         
         
         
-        post("/opiskelijat", (req, res) -> {
+        post("/Etusivu", (req, res) -> {
             int annos_id = Integer.parseInt(req.queryParams("annos_valinta"));
            
             int raaka_aine_id=Integer.parseInt(req.queryParams("raakaaine_valinta"));
@@ -67,20 +67,20 @@ public class Main {
             annosRaakaAineDao.saveOrUpdate(new AnnosRaakaAine(annos_id, raaka_aine_id, jarjestys, maara, ohje,raaka_aine_nimi));
             
 
-               res.redirect("/opiskelijat");
+               res.redirect("/Etusivu");
     return "";
         });
         
                 post("/uusi_annos", (req, res) -> {
              String uusi_annos=req.queryParams("uusi_annos");
             annosDao.saveOrUpdate(new Annos(1,uusi_annos));
-                        res.redirect("/opiskelijat");
+                        res.redirect("/Etusivu");
     return "";
         });
                         post("/uusi_aine", (req, res) -> {
              String uusi_aine=req.queryParams("uusi_aine");
             raakaAineDao.saveOrUpdate(new RaakaAine(1,uusi_aine));
-                        res.redirect("/opiskelijat");
+                        res.redirect("/Etusivu");
     return "";
         });
         
