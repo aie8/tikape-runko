@@ -14,6 +14,16 @@ import tikape.runko.domain.Annos;
 import tikape.runko.domain.RaakaAine;
 public class Main {
 
+    
+    public static boolean isInteger( String input ) {
+    try {
+        Integer.parseInt( input );
+        return true;
+    }
+    catch( Exception e ) {
+        return false;
+    }
+}
     public static void main(String[] args) throws Exception {
         if (System.getenv("PORT") != null) {
     port(Integer.valueOf(System.getenv("PORT")));
@@ -79,12 +89,17 @@ public class Main {
              {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}
                           if(null == req.queryParams("jarjestys")|| req.queryParams("jarjestys").trim().isEmpty())
              {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}                 
-            try{
+            
+            if (isInteger( req.queryParams("maara"))==false)
+            {
+            return "Virheellinen syöte, tarkasta että syötit kokonaisluvun";
+            }
+                        if (isInteger( req.queryParams("jarjestys"))==false)
+            {
+            return "Virheellinen syöte, tarkasta että syötit kokonaisluvun";
+            }
             int annos_id = Integer.parseInt(req.queryParams("annos_valinta"));
-            }
-            catch(final NumberFormatException e){
-                return "Virheellinen syöte tarkasta että syötit kokonaisluvun";
-            }
+           
             int raaka_aine_id=Integer.parseInt(req.queryParams("raakaaine_valinta"));
             int maara= Integer.parseInt(req.queryParams("maara"));
             int jarjestys=Integer.parseInt(req.queryParams("jarjestys"));
