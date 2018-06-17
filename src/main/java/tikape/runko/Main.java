@@ -37,10 +37,20 @@ public class Main {
 
         get("/annokset/:id", (req, res) -> {
             HashMap map = new HashMap<>();
-            map.put("annos", annosDao.findOne(Integer.parseInt(req.params("id"))));
-            map.put("raaka_aineet", annosRaakaAineDao.findAllInAnnos(Integer.parseInt(req.params("id"))));
-            return new ModelAndView(map, "opiskelija");
+            map.put("annos", annosDao.findOne(Integer.parseInt(req.params(":id"))));
+            map.put("raaka_aineet", annosRaakaAineDao.findAllInAnnos(Integer.parseInt(req.params(":id"))));
+            return new ModelAndView(map, "Annos");
         }, new ThymeleafTemplateEngine());
+        
+          get("/annokset/:id/:rid", (req, res) -> {
+            HashMap map = new HashMap<>();
+            map.put("annos", annosDao.findOne(Integer.parseInt(req.params(":id"))));
+            map.put("raaka_aine", annosRaakaAineDao.findOne(Integer.parseInt(req.params(":rid")),Integer.parseInt(req.params(":id"))));
+            return new ModelAndView(map, "Ohje");
+        }, new ThymeleafTemplateEngine());
+        
+        
+        
         
         post("/opiskelijat", (req, res) -> {
             int annos_id = Integer.parseInt(req.queryParams("annos_valinta"));
@@ -49,7 +59,8 @@ public class Main {
             int maara= Integer.parseInt(req.queryParams("maara"));
             int jarjestys=Integer.parseInt(req.queryParams("jarjestys"));
             String ohje=req.queryParams("ohje");
-            annosRaakaAineDao.saveOrUpdate(new AnnosRaakaAine(annos_id, raaka_aine_id, jarjestys, maara, ohje));
+            String raaka_aine_nimi=raakaAineDao.findOne(raaka_aine_id).getNimi();
+            annosRaakaAineDao.saveOrUpdate(new AnnosRaakaAine(annos_id, raaka_aine_id, jarjestys, maara, ohje,raaka_aine_nimi));
             
 
                res.redirect("/opiskelijat");

@@ -19,14 +19,16 @@ public class AnnosRaakaAine {
     private int jarjestys;
     private int maara;
     private String ohje;
+    String RaakaAineNimi;
 
     public AnnosRaakaAine(int annos_id, int raaka_aine_id, int jarjestys,
-            int maara, String ohje) {
+            int maara, String ohje,String raakaAineNimi) {
         this.RaakaAineId = raaka_aine_id;
         this.AnnosId=annos_id;
         this.jarjestys=jarjestys;
         this.maara=maara;
         this.ohje=ohje;
+        this.RaakaAineNimi=raakaAineNimi;
     }
     
     
@@ -53,6 +55,9 @@ public class AnnosRaakaAine {
         return ohje;
     }
     
+        public String getRaakaAineNimi(){
+            return RaakaAineNimi;
+        }
 
    // public void setNimi(String nimi) {
   //      this.nimi = nimi;
