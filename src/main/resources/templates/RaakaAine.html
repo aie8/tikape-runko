@@ -9,14 +9,9 @@
     <body>
 
         <p>Olet saapunut Raaka-aineen <span th:text="${raaka_aine.nimi}"></span> hallintasivulle. Raaka-aine on käytössä <span th:text="${lkm.toString()}"></span> kertaa. Käyttökerroiksi lasketaan sekä eri annoksissa käyttö, että useampi käyttös samassa annoksessa. </p>
-                <ol>
-            <li th:each="raaka_aine: ${raaka_aineet}">
-                <span th:text="${raaka_aine.RaakaAineNimi}">Raaka-aineen nimi</span> <a th:href="@{~/annokset/{id}/{rid}(id=${annos.id},rid=${raaka_aine.RaakaAineId})}">Ohje</a>
-            </li>
-                    </ol>
-                      <form method="POST" action="/uusi_aine">
-      Raaka-aineen nimi:<br/>
-      <input type="text" name="uusi_aine"/><br/>
+
+                      <form method="POST" action="@{~/poista/{rid}(rid=$raaka_aine.id})}">
+      
       <input type="submit" value="Lisää"/>
   </form>
   
