@@ -10,7 +10,7 @@
 
         <p>Olet saapunut Raaka-aineen <span th:text="${raaka_aine.nimi}"></span> hallintasivulle. Raaka-aine on käytössä <span th:text="${lkm.toString()}"></span> kertaa. Käyttökerroiksi lasketaan sekä eri annoksissa käyttö, että useampi käyttös samassa annoksessa. </p>
 
-                      <form method="POST" action="@{~/poista/{rid}(rid=${raaka_aine.id})}">
+                      <form method="POST" action="${'/poista/' + raaaka_aine.id}">
       
       <input type="submit" value="Poista raaka-aine"/>
   </form>
