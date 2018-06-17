@@ -106,7 +106,7 @@ public class Main {
                       get("/Annospoista/:rid", (req, res) -> {
             annosRaakaAineDao.annosDelete(Integer.parseInt(req.params(":rid")));         
             annosDao.delete(Integer.parseInt(req.params(":rid")));
-            res.redirect("/Raaka_aineet");
+            res.redirect("/Etusivu");
             return "";
         });            
            
