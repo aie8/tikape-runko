@@ -79,9 +79,12 @@ public class Main {
              {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}
                           if(null == req.queryParams("jarjestys")|| req.queryParams("jarjestys").trim().isEmpty())
              {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollista" ;}                 
-            
+            try{
             int annos_id = Integer.parseInt(req.queryParams("annos_valinta"));
-           
+            }
+            catch(final NumberFormatException e){
+                return "Virheellinen syöte tarkasta että syötit kokonaisluvun";
+            }
             int raaka_aine_id=Integer.parseInt(req.queryParams("raakaaine_valinta"));
             int maara= Integer.parseInt(req.queryParams("maara"));
             int jarjestys=Integer.parseInt(req.queryParams("jarjestys"));
