@@ -85,6 +85,8 @@ public class Main {
         
                 post("/uusi_annos", (req, res) -> {
              String uusi_annos=req.queryParams("uusi_annos");
+             if(null == uusi_annos || uusi_annos.trim().isEmpty())
+             {return "Virheellinen syöte, huomaa ettei tyhjän kentän lisääminen ole mahdollsita" ;}
             annosDao.saveOrUpdate(new Annos(1,uusi_annos));
                         res.redirect("/Etusivu");
     return "";
