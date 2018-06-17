@@ -96,12 +96,19 @@ public class Main {
     return "";
         });
         
-                 get("/poista/:rid", (req, res) -> {
+                 get("/rAinepoista/:rid", (req, res) -> {
             annosRaakaAineDao.rAineDelete(Integer.parseInt(req.params(":rid")));         
             raakaAineDao.delete(Integer.parseInt(req.params(":rid")));
             res.redirect("/Raaka_aineet");
             return "";
         });
+                 
+                      get("/Annospoista/:rid", (req, res) -> {
+            annosRaakaAineDao.annosDelete(Integer.parseInt(req.params(":rid")));         
+            annosDao.delete(Integer.parseInt(req.params(":rid")));
+            res.redirect("/Raaka_aineet");
+            return "";
+        });            
            
     }
 }
